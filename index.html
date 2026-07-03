@@ -676,9 +676,7 @@
     */
   
     /* Unified Square Tile Grid System */
-    .project-images, 
-    .project-images-3col, 
-    .project-images-5, 
+    .project-grid, 
     .gallery-grid {
       display: grid !important;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important; /* Smaller thumbnails */
@@ -688,9 +686,7 @@
       border: none !important;
     }
 
-    .project-images figure, 
-    .project-images-3col figure, 
-    .project-images-5 figure, 
+    .project-grid figure, 
     .gallery-item {
       grid-column: span 1 !important;
       aspect-ratio: 1 / 1 !important;
@@ -701,9 +697,7 @@
       border-radius: 4px !important;
     }
 
-    .project-images figure img, 
-    .project-images-3col figure img, 
-    .project-images-5 figure img, 
+    .project-grid figure img, 
     .gallery-item img {
       width: 100% !important;
       height: 100% !important;
@@ -711,16 +705,13 @@
       transition: transform 0.4s ease !important;
     }
 
-    .project-images figure:hover img, 
-    .project-images-3col figure:hover img, 
-    .project-images-5 figure:hover img, 
+    .project-grid figure:hover img, 
     .gallery-item:hover img {
       transform: scale(1.1) !important;
     }
 
-    .project-images figure figcaption, 
-    .project-images-3col figure figcaption, 
-    .project-images-5 figure figcaption {
+    .project-grid figure figcaption, 
+    .gallery-item figcaption {
       font-size: 0.65rem !important;
       padding: 4px 8px !important;
       background: rgba(0,0,0,0.7) !important;
@@ -774,7 +765,7 @@
             <h3>Barber Shop Interior</h3>
             <div class="meta">Full interior scene — lighting, shading &amp; rendering</div>
           </div>
-          <div class="project-images">
+          <div class="project-grid">
             <figure>
               <img
                 src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/b3c6f1e9d787485eb4485e6cec29be9a_barber_shop_render.jpg"
@@ -829,7 +820,7 @@
             <h3>Modern Living Corner</h3>
             <div class="meta">A photorealistic interior study focusing on soft natural lighting, realistic fabric textures, and minimalist composition.</div>
           </div>
-          <div class="project-images-3col">
+          <div class="project-grid">
             <figure>
               <img
                 src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a26b1b0d337a46399152194e2bd25e6c_blender_interior_final.jpg"
@@ -880,7 +871,7 @@
             <div class="meta">An abandoned railway scene featuring an overgrown locomotive surrounded by wild grasses and foliage — modeled in Autodesk Maya with compositing in Photoshop. Foliage created using Maya's Get Brush tool. Train model sourced from Sketchfab.</div>
           </div>
           
-          <div class="project-images-5">
+          <div class="project-grid">
             <figure>
               <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/1554d0eabf534a37bc55b730552eb5e2_Final%20Render.jpg" alt="Abandoned Railway — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Final Render" />
               <span class="zoom-hint">⤢</span>
@@ -916,7 +907,7 @@
             <h3>Daily life of Rural India</h3>
             <div class="meta">A detailed 3D recreation of a rural Indian courtyard, capturing the everyday atmosphere through intricate modeling and Photoshop compositing.</div>
           </div>
-          <div class="project-images-5">
+          <div class="project-grid">
             <figure>
               <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/0fa66ec7162b47f7b61affe1a6a14a20_rural_india_final.png" alt="Daily life of Rural India — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Final Render" />
               <span class="zoom-hint">⤢</span>
@@ -1087,7 +1078,7 @@
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Email Address" required />
         <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
+        <button type="submit" style="cursor:pointer;">Send Message</button>
       </form>
     </div>
     <div class="footer-bottom">
