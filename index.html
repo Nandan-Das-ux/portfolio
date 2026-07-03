@@ -288,6 +288,7 @@
       overflow: hidden;
       margin: 0;
       aspect-ratio: 4/3;
+      grid-column: span 1;
     }
 
     .project-images-3col figure img {
@@ -383,6 +384,7 @@
       opacity: 0;
       transition: opacity 0.35s;
       pointer-events: none;
+      display: flex;
     }
 
     .gallery-item:hover .overlay { opacity: 1; }
@@ -442,12 +444,8 @@
       justify-content: center;
     }
 
-    .about-visual .monogram {
-      font-size: 6rem;
-      font-weight: 700;
-      color: rgba(201,169,110,0.15);
-      letter-spacing: -0.04em;
-      user-select: none;
+    .about-visual img {
+       width:100%; height:100%; object-fit:cover; object-position:center top; display:block;
     }
 
     .about-visual .accent-line {
@@ -696,13 +694,14 @@
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
 
-    /* ── Scroll-based fade-in ── */
+    /* ── Scroll-based fade-in ──
     .fade-in {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
+    */
   
     /* Universal Compact Project Grid */
     .project-images, .project-images-3col, .project-images-5 {
@@ -753,11 +752,11 @@
       
       <!-- Category: Interior Modeling and Lighting -->
       <div class="portfolio-category">
-        <p class="section-label fade-in">3D Visualization</p>
-        <h2 class="section-title fade-in">Interior Modeling and Lighting</h2>
-        <div class="section-divider fade-in"></div>
+        <p class="section-label">3D Visualization</p>
+        <h2 class="section-title">Interior Modeling and Lighting</h2>
+        <div class="section-divider"></div>
 
-        <div class="project-card fade-in">
+        <div class="project-card">
           <div class="project-header">
             <div class="project-tag">Autodesk Maya</div>
             <h3>Barber Shop Interior</h3>
@@ -812,7 +811,7 @@
         </div>
 
         <!-- Modern Living Corner -->
-        <div class="project-card fade-in">
+        <div class="project-card">
           <div class="project-header">
             <div class="project-tag">Blender</div>
             <h3>Modern Living Corner</h3>
@@ -858,11 +857,11 @@
 
       <!-- Category: Environment Lighting -->
       <div class="portfolio-category">
-        <p class="section-label fade-in">Exterior Visualization</p>
-        <h2 class="section-title fade-in">Environment Lighting</h2>
-        <div class="section-divider fade-in"></div>
+        <p class="section-label">Exterior Visualization</p>
+        <h2 class="section-title">Environment Lighting</h2>
+        <div class="section-divider"></div>
 
-        <div class="project-card fade-in">
+        <div class="project-card">
           <div class="project-header">
             <div class="project-tag">3D Environments</div>
             <h3>Abandoned Railway</h3>
@@ -938,11 +937,11 @@
 
       <!-- Category: Unreal Project -->
       <div class="portfolio-category">
-        <p class="section-label fade-in">Unreal Project</p>
-        <h2 class="section-title fade-in">Unreal Project</h2>
-        <div class="section-divider fade-in"></div>
+        <p class="section-label">Game Engine</p>
+        <h2 class="section-title">Unreal Project</h2>
+        <div class="section-divider"></div>
 
-        <div class="project-card fade-in">
+        <div class="project-card">
           <div class="project-header">
             <div class="project-tag">Unreal Engine 4</div>
             <h3>Abandoned Forest</h3>
@@ -953,7 +952,7 @@
               controls
               loop
               muted
-              style="width:100%; border-radius: 8px; border: 1px solid var(--border);"
+              style="width:100%; border-radius: 8px; border: 1px solid var(--border); aspect-ratio: 16/9;"
             >
               <source src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/bde4437fc0ad4323a90c0bdf57d1fdf7_Asthetic%20forrest%20%282%29.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -961,8 +960,6 @@
           </div>
         </div>
       </div>
-      <!-- Container for future categories -->
-      <div id="new-projects"></div>
 
     </div>
   </section>
@@ -970,12 +967,12 @@
   <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
-      <p class="section-label fade-in">Other Works</p>
-      <h2 class="section-title fade-in">Individual Renders</h2>
-      <div class="section-divider fade-in"></div>
+      <p class="section-label">Other Works</p>
+      <h2 class="section-title">Individual Renders</h2>
+      <div class="section-divider"></div>
     </div>
 
-    <div class="gallery-grid fade-in">
+    <div class="gallery-grid">
       <div class="gallery-item">
         <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/549b49d0cc6a4cc98245517d23aa75fb_render1.png" alt="Render 1" loading="lazy" class="lightbox-trigger" data-caption="Render 01" />
         <div class="overlay"></div>
@@ -1013,28 +1010,27 @@
   <section id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-visual fade-in">
+        <div class="about-visual">
           <div class="accent-line"></div>
           <img
             src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/8d990073b1594e26b3f4ce527ab777c7_nandan_das_profile_v2.jpg"
             alt="Nandan Das — 3D Artist"
-            style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"
           />
         </div>
         <div class="about-content">
-          <p class="section-label fade-in">About</p>
-          <h2 class="section-title fade-in">About Nandan Das</h2>
-          <div class="section-divider fade-in"></div>
-          <p class="fade-in">
+          <p class="section-label">About</p>
+          <h2 class="section-title">About Nandan Das</h2>
+          <div class="section-divider"></div>
+          <p>
             A passionate 3D interior designer and visualization artist with a deep focus on creating
             photorealistic environments. Every project begins with a concept and is meticulously
             crafted into a fully detailed, lifelike space.
           </p>
-          <p class="fade-in">
+          <p>
             Specializing in architectural visualization and interior renders, using industry-leading
             tools to bring spaces to life with accurate lighting, materials, and atmosphere.
           </p>
-          <div class="skills-list fade-in">
+          <div class="skills-list">
             <span class="skill-chip">Autodesk Maya</span>
             <span class="skill-chip">Blender</span>
             <span class="skill-chip">3D Modeling</span>
@@ -1053,7 +1049,7 @@
   <!-- CONTACT / FOOTER -->
   <footer id="contact">
     <div class="contact-grid">
-      <div class="contact-info fade-in">
+      <div class="contact-info">
         <p class="section-label">Contact</p>
         <h2 class="section-title">Get In Touch</h2>
         <p>
@@ -1075,7 +1071,7 @@
           </a>
         </div>
       </div>
-      <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Email Address" required />
         <textarea placeholder="Your Message"></textarea>
@@ -1096,14 +1092,6 @@
   </div>
 
   <script>
-    // ── Scroll-based fade-in ──
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }),
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // ── Contact form mock submit ──
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
@@ -1112,7 +1100,6 @@
       setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
     }
 
-    // ── Lightbox ──
     const lightbox        = document.getElementById('lightbox');
     const lightboxImg     = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
@@ -1130,26 +1117,19 @@
     function closeLightbox() {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
-      // clear src after transition to avoid flash on reopen
       setTimeout(() => { lightboxImg.src = ''; }, 300);
     }
 
-    // Attach click to all lightbox-trigger images
     document.querySelectorAll('.lightbox-trigger').forEach(img => {
       img.addEventListener('click', () => {
         openLightbox(img.src, img.alt, img.dataset.caption || img.alt);
       });
     });
 
-    // Close via button
     lightboxClose.addEventListener('click', closeLightbox);
-
-    // Close via backdrop click (outside image)
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
-
-    // Close via Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
