@@ -158,14 +158,18 @@
       margin-bottom: 56px;
     }
 
-    /* ───────── FEATURED PROJECT ───────── */
+    /* ───────── PORTFOLIO CATEGORIES ───────── */
     #work { background: var(--surface); }
+
+    .portfolio-category { margin-bottom: 100px; }
+    .portfolio-category:last-child { margin-bottom: 0; }
 
     .project-card {
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
+      margin-bottom: 40px;
     }
 
     .project-header {
@@ -707,110 +711,118 @@
     <a href="#work" class="btn">View Projects</a>
   </section>
 
-  <!-- FEATURED PROJECT -->
+  <!-- PORTFOLIO -->
   <section id="work">
     <div class="container">
-      <p class="section-label fade-in">Featured Projects</p>
-      <h2 class="section-title fade-in">Selected Work</h2>
-      <div class="section-divider fade-in"></div>
+      
+      <!-- Category: Interior Modeling and Lighting -->
+      <div class="portfolio-category">
+        <p class="section-label fade-in">3D Visualization</p>
+        <h2 class="section-title fade-in">Interior Modeling and Lighting</h2>
+        <div class="section-divider fade-in"></div>
 
-      <div class="project-card fade-in">
-        <div class="project-header">
-          <div class="project-tag">Autodesk Maya</div>
-          <h3>Barber Shop Interior</h3>
-          <div class="meta">Full interior scene — lighting, shading &amp; rendering</div>
+        <div class="project-card fade-in">
+          <div class="project-header">
+            <div class="project-tag">Autodesk Maya</div>
+            <h3>Barber Shop Interior</h3>
+            <div class="meta">Full interior scene — lighting, shading &amp; rendering</div>
+          </div>
+          <div class="project-images">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/b3c6f1e9d787485eb4485e6cec29be9a_barber_shop_render.jpg"
+                alt="Barber Shop — Final Render"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — Final Render"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/472106dff09a4d9fad6e732f19553522_barber_shop_ao.png"
+                alt="Barber Shop — AO Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — AO Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/edd5fa49a52a463981bf0e8e7fa48f46_barber_shop_albedo.jpg"
+                alt="Barber Shop — Albedo Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — Albedo Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Albedo Pass</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/79b2b2e19bd14489bdea7e859c674b00_barber_shop_wireframe.png"
+                alt="Barber Shop — Wireframe"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — Wireframe"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Wireframe</figcaption>
+            </figure>
+          </div>
         </div>
-        <div class="project-images">
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/b3c6f1e9d787485eb4485e6cec29be9a_barber_shop_render.jpg"
-              alt="Barber Shop — Final Render"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Barber Shop — Final Render"
-            />
-            <span class="zoom-hint">⤢</span>
-            <figcaption>Final Render</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/472106dff09a4d9fad6e732f19553522_barber_shop_ao.png"
-              alt="Barber Shop — AO Pass"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Barber Shop — AO Pass"
-            />
-            <span class="zoom-hint">⤢</span>
-            <figcaption>AO Pass</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/edd5fa49a52a463981bf0e8e7fa48f46_barber_shop_albedo.jpg"
-              alt="Barber Shop — Albedo Pass"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Barber Shop — Albedo Pass"
-            />
-            <span class="zoom-hint">⤢</span>
-            <figcaption>Albedo Pass</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/79b2b2e19bd14489bdea7e859c674b00_barber_shop_wireframe.png"
-              alt="Barber Shop — Wireframe"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Barber Shop — Wireframe"
-            />
-            <span class="zoom-hint">⤢</span>
-            <figcaption>Wireframe</figcaption>
-          </figure>
+
+        <!-- Modern Living Corner -->
+        <div class="project-card fade-in">
+          <div class="project-header">
+            <div class="project-tag">Blender</div>
+            <h3>Modern Living Corner</h3>
+            <div class="meta">A photorealistic interior study focusing on soft natural lighting, realistic fabric textures, and minimalist composition.</div>
+          </div>
+          <div class="project-images-3col">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a26b1b0d337a46399152194e2bd25e6c_blender_interior_final.jpg"
+                alt="Modern Living Corner — Final Render"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Modern Living Corner — Final Render"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/5ed782e17a9e4acb87b0438c2867144c_blender_interior_ao.png"
+                alt="Modern Living Corner — AO Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Modern Living Corner — AO Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a6987aa1b56e433b95228b0e67be9a98_blender_interior_detail.jpg"
+                alt="Modern Living Corner — Detail View"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Modern Living Corner — Detail View"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Detail View</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
-      <!-- Modern Living Corner -->
-      <div class="project-card fade-in">
-        <div class="project-header">
-          <div class="project-tag">Blender</div>
-          <h3>Modern Living Corner</h3>
-          <div class="meta">A photorealistic interior study focusing on soft natural lighting, realistic fabric textures, and minimalist composition.</div>
-        </div>
-        <div class="project-images-3col">
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a26b1b0d337a46399152194e2bd25e6c_blender_interior_final.jpg"
-              alt="Modern Living Corner — Final Render"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Modern Living Corner — Final Render"
-            />
-            <span class="zoom-hint">&#x2922;</span>
-            <figcaption>Final Render</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/5ed782e17a9e4acb87b0438c2867144c_blender_interior_ao.png"
-              alt="Modern Living Corner — AO Pass"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Modern Living Corner — AO Pass"
-            />
-            <span class="zoom-hint">&#x2922;</span>
-            <figcaption>AO Pass</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a6987aa1b56e433b95228b0e67be9a98_blender_interior_detail.jpg"
-              alt="Modern Living Corner — Detail View"
-              loading="lazy"
-              class="lightbox-trigger"
-              data-caption="Modern Living Corner — Detail View"
-            />
-            <span class="zoom-hint">&#x2922;</span>
-            <figcaption>Detail View</figcaption>
-          </figure>
-        </div>
-      </div>
+      <!-- Container for future categories -->
+      <div id="new-projects"></div>
+
     </div>
   </section>
 
