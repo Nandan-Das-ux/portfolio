@@ -164,18 +164,25 @@
     .portfolio-category { margin-bottom: 100px; }
     .portfolio-category:last-child { margin-bottom: 0; }
 
+    
     .project-card {
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+
+    
     .project-header {
-      padding: 36px 40px 24px;
+      padding: 18px 24px 14px;
       border-bottom: 1px solid var(--border);
     }
+
 
     .project-tag {
       display: inline-block;
@@ -213,11 +220,7 @@
       background: var(--accent);
     }
 
-    .project-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
+    
 
     .project-images figure {
       position: relative;
@@ -247,21 +250,17 @@
       color: var(--accent2);
     }
 
-    /* Grid borders */
-    .project-images figure:nth-child(even),
-    .project-images-3col figure:nth-child(n+2),
-    .project-images-5 figure:nth-child(n+2) { border-left: 1px solid var(--border); }
-    
-    .project-images figure:nth-child(n+3),
-    .project-images-5 figure:nth-child(n+3) { border-top: 1px solid var(--border); }
+    /* 2x2 grid borders */
+    .project-images figure:nth-child(even) { border-left: 1px solid var(--border); }
+    .project-images figure:nth-child(n+3)  { border-top:  1px solid var(--border); }
 
     /* Clickable image cursor */
     .lightbox-trigger {
       cursor: zoom-in;
     }
 
-    /* Zoom icon hint */
-    .zoom-hint {
+    /* Zoom icon hint on project images */
+    .project-images figure .zoom-hint {
       position: absolute;
       top: 12px; right: 12px;
       width: 32px; height: 32px;
@@ -278,40 +277,74 @@
       color: var(--accent);
     }
 
-    figure:hover .zoom-hint, .gallery-item:hover .zoom-hint { opacity: 1; }
+    .project-images figure:hover .zoom-hint { opacity: 1; }
 
 
-    /* ───────── PROJECT IMAGES VARIANTS ───────── */
-    .project-images-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-    }
-
-    .project-images-5 {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0;
-    }
+    /* ───────── 3-COL PROJECT IMAGES ───────── */
     
-    .project-images-5 figure { grid-column: span 2; }
-    .project-images-5 figure:nth-child(1),
-    .project-images-5 figure:nth-child(2) { grid-column: span 3; }
 
-    @media (max-width: 900px) {
-      .project-images, .project-images-3col, .project-images-5 { grid-template-columns: 1fr; }
-      .project-images figure, .project-images-3col figure, .project-images-5 figure { 
-        grid-column: span 1 !important; 
-        border: none !important; 
-        border-top: 1px solid var(--border) !important; 
-      }
-      .project-images figure:first-child, 
-      .project-images-3col figure:first-child, 
-      .project-images-5 figure:first-child { border-top: none !important; }
+    .project-images-3col figure {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      aspect-ratio: 4/3;
     }
+
+    .project-images-3col figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .project-images-3col figure:hover img { transform: scale(1.04); }
+
+    .project-images-3col figure figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+    }
+
+    .project-images-3col figure:nth-child(n+2) { border-left: 1px solid var(--border); }
+
+    .project-images-3col figure .zoom-hint {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(201,169,110,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .project-images-3col figure:hover .zoom-hint { opacity: 1; }
 
     /* Space between consecutive project cards */
-    .project-card + .project-card { margin-top: 40px; }
+    .project-card + 
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
 
     /* ───────── OTHER WORKS ───────── */
     #gallery { background: var(--bg); }
@@ -367,6 +400,26 @@
 
     .gallery-item:hover .gallery-label { opacity: 1; }
 
+    /* Zoom icon on gallery items */
+    .gallery-item .zoom-hint {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(201,169,110,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .gallery-item:hover .zoom-hint { opacity: 1; }
+
     /* ───────── ABOUT ───────── */
     #about { background: var(--surface); }
 
@@ -389,8 +442,12 @@
       justify-content: center;
     }
 
-    .about-visual img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+    .about-visual .monogram {
+      font-size: 6rem;
+      font-weight: 700;
+      color: rgba(201,169,110,0.15);
+      letter-spacing: -0.04em;
+      user-select: none;
     }
 
     .about-visual .accent-line {
@@ -611,6 +668,34 @@
       white-space: nowrap;
     }
 
+    /* ───────── RESPONSIVE ───────── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav ul { gap: 20px; }
+      
+      
+      .project-images-3col figure:nth-child(3) { border-left: none; border-top: 1px solid var(--border); }
+      .project-images figure:nth-child(even) { border-left: none; }
+      .project-images figure:nth-child(n+2)  { border-top: 1px solid var(--border); }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      section { padding: 72px 16px; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 2px; }
+      
+      .project-images-3col figure:nth-child(n+2) { border-left: none; border-top: 1px solid var(--border); }
+      
+    .project-header {
+      padding: 18px 24px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
     /* ── Scroll-based fade-in ── */
     .fade-in {
       opacity: 0;
@@ -618,7 +703,28 @@
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
-  </style>
+  
+    /* Universal Compact Project Grid */
+    .project-images, .project-images-3col, .project-images-5 {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+      gap: 1px !important;
+      background: var(--border) !important;
+      padding: 0 !important;
+    }
+
+    .project-images figure, .project-images-3col figure, .project-images-5 figure {
+      grid-column: span 1 !important;
+      aspect-ratio: 1 / 1 !important; /* Square thumbnails for better density */
+      border: none !important;
+      background: var(--surface) !important;
+    }
+
+    .project-images figure figcaption, .project-images-3col figure figcaption, .project-images-5 figure figcaption {
+      font-size: 0.65rem !important;
+      padding: 6px 10px !important;
+    }
+</style>
 </head>
 <body>
 
@@ -762,6 +868,7 @@
             <h3>Abandoned Railway</h3>
             <div class="meta">An abandoned railway scene featuring an overgrown locomotive surrounded by wild grasses and foliage — modeled in Autodesk Maya with compositing in Photoshop. Foliage created using Maya's Get Brush tool. Train model sourced from Sketchfab.</div>
           </div>
+          
           <div class="project-images-5">
             <figure>
               <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/1554d0eabf534a37bc55b730552eb5e2_Final%20Render.jpg" alt="Abandoned Railway — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Final Render" />
@@ -828,13 +935,14 @@
         </div>
       </div>
 
+
       <!-- Category: Unreal Project -->
       <div class="portfolio-category">
-        <p class="section-label">Game Engine</p>
-        <h2 class="section-title">Unreal Project</h2>
-        <div class="section-divider"></div>
+        <p class="section-label fade-in">Unreal Project</p>
+        <h2 class="section-title fade-in">Unreal Project</h2>
+        <div class="section-divider fade-in"></div>
 
-        <div class="project-card">
+        <div class="project-card fade-in">
           <div class="project-header">
             <div class="project-tag">Unreal Engine 4</div>
             <h3>Abandoned Forest</h3>
@@ -845,7 +953,7 @@
               controls
               loop
               muted
-              style="width:100%; border-radius: 8px; border: 1px solid var(--border); aspect-ratio: 16/9;"
+              style="width:100%; border-radius: 8px; border: 1px solid var(--border);"
             >
               <source src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/bde4437fc0ad4323a90c0bdf57d1fdf7_Asthetic%20forrest%20%282%29.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -853,6 +961,8 @@
           </div>
         </div>
       </div>
+      <!-- Container for future categories -->
+      <div id="new-projects"></div>
 
     </div>
   </section>
@@ -860,12 +970,12 @@
   <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
-      <p class="section-label">Other Works</p>
-      <h2 class="section-title">Individual Renders</h2>
-      <div class="section-divider"></div>
+      <p class="section-label fade-in">Other Works</p>
+      <h2 class="section-title fade-in">Individual Renders</h2>
+      <div class="section-divider fade-in"></div>
     </div>
 
-    <div class="gallery-grid">
+    <div class="gallery-grid fade-in">
       <div class="gallery-item">
         <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/549b49d0cc6a4cc98245517d23aa75fb_render1.png" alt="Render 1" loading="lazy" class="lightbox-trigger" data-caption="Render 01" />
         <div class="overlay"></div>
@@ -903,27 +1013,28 @@
   <section id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-visual">
+        <div class="about-visual fade-in">
           <div class="accent-line"></div>
           <img
             src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/8d990073b1594e26b3f4ce527ab777c7_nandan_das_profile_v2.jpg"
             alt="Nandan Das — 3D Artist"
+            style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"
           />
         </div>
         <div class="about-content">
-          <p class="section-label">About</p>
-          <h2 class="section-title">About Nandan Das</h2>
-          <div class="section-divider"></div>
-          <p>
+          <p class="section-label fade-in">About</p>
+          <h2 class="section-title fade-in">About Nandan Das</h2>
+          <div class="section-divider fade-in"></div>
+          <p class="fade-in">
             A passionate 3D interior designer and visualization artist with a deep focus on creating
             photorealistic environments. Every project begins with a concept and is meticulously
             crafted into a fully detailed, lifelike space.
           </p>
-          <p>
+          <p class="fade-in">
             Specializing in architectural visualization and interior renders, using industry-leading
             tools to bring spaces to life with accurate lighting, materials, and atmosphere.
           </p>
-          <div class="skills-list">
+          <div class="skills-list fade-in">
             <span class="skill-chip">Autodesk Maya</span>
             <span class="skill-chip">Blender</span>
             <span class="skill-chip">3D Modeling</span>
@@ -942,7 +1053,7 @@
   <!-- CONTACT / FOOTER -->
   <footer id="contact">
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info fade-in">
         <p class="section-label">Contact</p>
         <h2 class="section-title">Get In Touch</h2>
         <p>
@@ -964,7 +1075,7 @@
           </a>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Email Address" required />
         <textarea placeholder="Your Message"></textarea>
@@ -985,12 +1096,14 @@
   </div>
 
   <script>
+    // ── Scroll-based fade-in ──
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }),
       { threshold: 0.12 }
     );
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // ── Contact form mock submit ──
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
@@ -999,6 +1112,7 @@
       setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
     }
 
+    // ── Lightbox ──
     const lightbox        = document.getElementById('lightbox');
     const lightboxImg     = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
@@ -1016,19 +1130,26 @@
     function closeLightbox() {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
+      // clear src after transition to avoid flash on reopen
       setTimeout(() => { lightboxImg.src = ''; }, 300);
     }
 
+    // Attach click to all lightbox-trigger images
     document.querySelectorAll('.lightbox-trigger').forEach(img => {
       img.addEventListener('click', () => {
         openLightbox(img.src, img.alt, img.dataset.caption || img.alt);
       });
     });
 
+    // Close via button
     lightboxClose.addEventListener('click', closeLightbox);
+
+    // Close via backdrop click (outside image)
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
+
+    // Close via Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
