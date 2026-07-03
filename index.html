@@ -539,8 +539,8 @@
     /* Unified High-Density Square Grid */
     .project-grid, .gallery-grid {
       display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
-      gap: 3px !important;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+      gap: 5px !important;
       background: transparent !important;
       padding: 0 !important;
       border: none !important;
@@ -549,6 +549,7 @@
 
     .project-grid figure, .gallery-item {
       grid-column: span 1 !important;
+      width: 100% !important;
       aspect-ratio: 1 / 1 !important; /* STRICT SQUARE */
       margin: 0 !important;
       position: relative !important;
@@ -556,6 +557,8 @@
       border: 1px solid var(--border) !important;
       background: var(--surface) !important;
       border-radius: 4px !important;
+      display: block !important;
+      height: auto !important; /* Let aspect-ratio define height */
     }
 
     .project-grid figure img, .gallery-item img {
@@ -563,6 +566,9 @@
       height: 100% !important;
       object-fit: cover !important;
       display: block !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
     }
 
     .project-grid figure figcaption {
@@ -570,17 +576,27 @@
       bottom: 0 !important;
       left: 0 !important;
       right: 0 !important;
-      font-size: 0.6rem !important;
-      padding: 3px 6px !important;
-      background: rgba(0,0,0,0.75) !important;
-      color: var(--accent2) !important;
-      z-index: 5 !important;
+      font-size: 0.65rem !important;
+      padding: 5px 8px !important;
+      background: rgba(0,0,0,0.7) !important;
+      color: #fff !important;
+      z-index: 10 !important;
       pointer-events: none !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
     }
 
     .project-card {
-      max-width: 1000px !important;
-      margin: 0 auto 40px !important;
+      max-width: 1100px !important;
+      margin: 0 auto 50px !important;
+      background: var(--surface2) !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      border: 1px solid var(--border) !important;
+    }
+
+    .project-header {
+      padding: 24px 30px 18px !important;
     }
 </style>
 </head>
@@ -727,7 +743,7 @@
             <div class="meta">An abandoned railway scene featuring an overgrown locomotive surrounded by wild grasses and foliage — modeled in Autodesk Maya with compositing in Photoshop. Foliage created using Maya's Get Brush tool. Train model sourced from Sketchfab.</div>
           </div>
           
-          <div class="project-grid">
+          <div class="project-grid" style="padding: 0 30px 30px;">
             <figure>
               <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/1554d0eabf534a37bc55b730552eb5e2_Final%20Render.jpg" alt="Abandoned Railway — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Final Render" />
               <span class="zoom-hint">⤢</span>
@@ -763,7 +779,7 @@
             <h3>Daily life of Rural India</h3>
             <div class="meta">A detailed 3D recreation of a rural Indian courtyard, capturing the everyday atmosphere through intricate modeling and Photoshop compositing.</div>
           </div>
-          <div class="project-grid">
+          <div class="project-grid" style="padding: 0 30px 30px;">
             <figure>
               <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/0fa66ec7162b47f7b61affe1a6a14a20_rural_india_final.png" alt="Daily life of Rural India — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Final Render" />
               <span class="zoom-hint">⤢</span>
@@ -806,7 +822,7 @@
             <h3>Abandoned Forest</h3>
             <div class="meta">My first project created in Unreal Engine 4 — a cinematic environment study exploring mood, atmosphere, and natural lighting in a dense, abandoned forest setting.</div>
           </div>
-          <div style="padding: 24px 40px 40px;">
+          <div style="padding: 0 30px 30px;">
             <video
               controls
               loop
