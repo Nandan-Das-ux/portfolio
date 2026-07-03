@@ -165,23 +165,9 @@
     .portfolio-category:last-child { margin-bottom: 0; }
 
     
-    .project-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 50px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
 
 
     
-    .project-header {
-      padding: 18px 24px 14px;
-      border-bottom: 1px solid var(--border);
-    }
 
 
     .project-tag {
@@ -222,37 +208,8 @@
 
     
 
-    .project-images figure {
-      position: relative;
-      overflow: hidden;
-      margin: 0;
-      aspect-ratio: 4/3;
-    }
+    
 
-    .project-images figure img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .project-images figure:hover img { transform: scale(1.04); }
-
-    .project-images figure figcaption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 10px 16px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent2);
-    }
-
-    /* 2x2 grid borders */
-    .project-images figure:nth-child(even) { border-left: 1px solid var(--border); }
-    .project-images figure:nth-child(n+3)  { border-top:  1px solid var(--border); }
 
     /* Clickable image cursor */
     .lightbox-trigger {
@@ -283,55 +240,8 @@
     /* ───────── 3-COL PROJECT IMAGES ───────── */
     
 
-    .project-images-3col figure {
-      position: relative;
-      overflow: hidden;
-      margin: 0;
-      aspect-ratio: 4/3;
-      grid-column: span 1;
-    }
+    
 
-    .project-images-3col figure img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .project-images-3col figure:hover img { transform: scale(1.04); }
-
-    .project-images-3col figure figcaption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 10px 16px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent2);
-    }
-
-    .project-images-3col figure:nth-child(n+2) { border-left: 1px solid var(--border); }
-
-    .project-images-3col figure .zoom-hint {
-      position: absolute;
-      top: 12px; right: 12px;
-      width: 32px; height: 32px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(201,169,110,0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-      font-size: 0.85rem;
-      color: var(--accent);
-    }
-
-    .project-images-3col figure:hover .zoom-hint { opacity: 1; }
 
     /* Space between consecutive project cards */
     .project-card + 
@@ -350,57 +260,8 @@
     /* ───────── OTHER WORKS ───────── */
     #gallery { background: var(--bg); }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2px;
-    }
+    
 
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      background: var(--surface2);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease, filter 0.5s ease;
-      filter: brightness(0.85);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.06);
-      filter: brightness(1);
-    }
-
-    .gallery-item .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(201,169,110,0.08);
-      opacity: 0;
-      transition: opacity 0.35s;
-      pointer-events: none;
-      display: flex;
-    }
-
-    .gallery-item:hover .overlay { opacity: 1; }
-
-    .gallery-label {
-      position: absolute;
-      bottom: 12px; left: 14px;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-
-    .gallery-item:hover .gallery-label { opacity: 1; }
 
     /* Zoom icon on gallery items */
     .gallery-item .zoom-hint {
@@ -675,56 +536,51 @@
     .fade-in.visible { opacity: 1; transform: none; }
     */
   
-    /* Unified Square Tile Grid System */
-    .project-grid, 
-    .gallery-grid {
+    /* Unified High-Density Square Grid */
+    .project-grid, .gallery-grid {
       display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important; /* Smaller thumbnails */
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
       gap: 3px !important;
       background: transparent !important;
       padding: 0 !important;
       border: none !important;
+      width: 100% !important;
     }
 
-    .project-grid figure, 
-    .gallery-item {
+    .project-grid figure, .gallery-item {
       grid-column: span 1 !important;
-      aspect-ratio: 1 / 1 !important;
+      aspect-ratio: 1 / 1 !important; /* STRICT SQUARE */
       margin: 0 !important;
-      border: 1px solid var(--border) !important; /* Subtle border for each tile */
-      background: var(--surface) !important;
+      position: relative !important;
       overflow: hidden !important;
+      border: 1px solid var(--border) !important;
+      background: var(--surface) !important;
       border-radius: 4px !important;
     }
 
-    .project-grid figure img, 
-    .gallery-item img {
+    .project-grid figure img, .gallery-item img {
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
-      transition: transform 0.4s ease !important;
-    }
-
-    .project-grid figure:hover img, 
-    .gallery-item:hover img {
-      transform: scale(1.1) !important;
-    }
-
-    .project-grid figure figcaption, 
-    .gallery-item figcaption {
-      font-size: 0.65rem !important;
-      padding: 4px 8px !important;
-      background: rgba(0,0,0,0.7) !important;
       display: block !important;
     }
 
-    /* Smaller Project Card headers to match */
-    .project-card {
-      max-width: 1100px !important;
-      margin-bottom: 40px !important;
+    .project-grid figure figcaption {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      font-size: 0.6rem !important;
+      padding: 3px 6px !important;
+      background: rgba(0,0,0,0.75) !important;
+      color: var(--accent2) !important;
+      z-index: 5 !important;
+      pointer-events: none !important;
     }
-    .project-header {
-      padding: 16px 20px !important;
+
+    .project-card {
+      max-width: 1000px !important;
+      margin: 0 auto 40px !important;
     }
 </style>
 </head>
