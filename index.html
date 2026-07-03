@@ -217,7 +217,7 @@
     }
 
     /* Zoom icon hint on project images */
-    .project-images figure .zoom-hint {
+    .project-grid figure .zoom-hint {
       position: absolute;
       top: 12px; right: 12px;
       width: 32px; height: 32px;
@@ -234,7 +234,7 @@
       color: var(--accent);
     }
 
-    .project-images figure:hover .zoom-hint { opacity: 1; }
+    .project-grid figure:hover .zoom-hint { opacity: 1; }
 
 
     /* ───────── 3-COL PROJECT IMAGES ───────── */
@@ -539,7 +539,7 @@
     /* Unified High-Density Square Grid */
     .project-grid, .gallery-grid {
       display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important; /* Smaller thumbnails */
+      grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)) !important; /* Smaller thumbnails */
       gap: 5px !important;
       background: transparent !important;
       padding: 0 !important;
@@ -635,7 +635,8 @@
       <!-- Category: Interior Modeling and Lighting -->
       <div class="portfolio-category">
         <p class="section-label">3D Visualization</p>
-        <h2 class="section-title">Interior Modeling and Lighting</h2><p class="section-intro">Every technical pass is lightbox-enabled — click any render to view modeling details (Wireframe), texture work (Albedo), and technical breakdowns at full size.</p>
+        <h2 class="section-title">Interior Modeling and Lighting</h2>
+        <p class="section-intro">Every technical pass is lightbox-enabled—click any render to view modeling details (Wireframe), texture work (Albedo), and technical breakdowns at full size.</p>
         <div class="section-divider"></div>
 
         <div class="project-card">
@@ -741,6 +742,7 @@
       <div class="portfolio-category">
         <p class="section-label">Exterior Visualization</p>
         <h2 class="section-title">Environment Lighting</h2>
+        <p class="section-intro">Every technical pass is lightbox-enabled—click any render to view modeling details (Wireframe), texture work (Albedo), and technical breakdowns at full size.</p>
         <div class="section-divider"></div>
 
         <div class="project-card">
