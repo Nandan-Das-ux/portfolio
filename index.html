@@ -536,11 +536,11 @@
     .fade-in.visible { opacity: 1; transform: none; }
     */
   
-    /* Unified High-Density Square Grid */
+    /* Unified Square Tile Grid System */
     .project-grid, .gallery-grid {
       display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(550px, 1fr)) !important; /* Smaller thumbnails */
-      gap: 5px !important;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 550px), 1fr)) !important;
+      gap: 10px !important;
       background: transparent !important;
       padding: 0 !important;
       border: none !important;
@@ -550,15 +550,26 @@
     .project-grid figure, .gallery-item {
       grid-column: span 1 !important;
       width: 100% !important;
-      aspect-ratio: 1 / 1 !important; /* STRICT SQUARE */
+      aspect-ratio: 1 / 1 !important;
       margin: 0 !important;
       position: relative !important;
       overflow: hidden !important;
       border: 1px solid var(--border) !important;
       background: var(--surface) !important;
-      border-radius: 4px !important;
-      display: block !important;
-      height: auto !important; /* Let aspect-ratio define height */
+      border-radius: 8px !important;
+      transition: all 0.3s ease !important;
+      cursor: zoom-in !important;
+    }
+
+    /* Interactive States */
+    .project-grid figure:hover, .gallery-item:hover {
+      border-color: var(--accent) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+      z-index: 2 !important;
+    }
+
+    .project-grid figure:active, .gallery-item:active {
+      transform: scale(0.96) !important;
     }
 
     .project-grid figure img, .gallery-item img {
@@ -566,50 +577,11 @@
       height: 100% !important;
       object-fit: cover !important;
       display: block !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
+      transition: transform 0.5s ease !important;
     }
 
-    .project-grid figure figcaption {
-      position: absolute !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      font-size: 0.65rem !important;
-      padding: 5px 8px !important;
-      background: rgba(0,0,0,0.7) !important;
-      color: #fff !important;
-      z-index: 10 !important;
-      pointer-events: none !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.05em !important;
-    }
-
-    .project-card {
-      max-width: 1100px !important;
-      margin: 0 auto 50px !important;
-      background: var(--surface2) !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
-      border: 1px solid var(--border) !important;
-    }
-
-    .project-header {
-      padding: 24px 30px 18px !important;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      margin-bottom: 32px;
-      font-size: 0.95rem;
-      max-width: 800px;
-    }
-
-    /* Click Animation */
-    .lightbox-trigger:active {
-      transform: scale(0.95) !important;
-      transition: transform 0.1s ease !important;
+    .project-grid figure:hover img, .gallery-item:hover img {
+      transform: scale(1.05) !important;
     }
 </style>
 </head>
