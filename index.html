@@ -217,7 +217,7 @@
     }
 
     /* Zoom icon hint on project images */
-    .project-images figure .zoom-hint {
+    .project-grid figure .zoom-hint {
       position: absolute;
       top: 12px; right: 12px;
       width: 32px; height: 32px;
@@ -234,7 +234,7 @@
       color: var(--accent);
     }
 
-    .project-images figure:hover .zoom-hint { opacity: 1; }
+    .project-grid figure:hover .zoom-hint { opacity: 1; }
 
 
     /* ───────── 3-COL PROJECT IMAGES ───────── */
@@ -598,6 +598,13 @@
     .project-header {
       padding: 24px 30px 18px !important;
     }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+      max-width: 800px;
+    }
 </style>
 </head>
 <body>
@@ -628,7 +635,7 @@
       <!-- Category: Interior Modeling and Lighting -->
       <div class="portfolio-category">
         <p class="section-label">3D Visualization</p>
-        <h2 class="section-title">Interior Modeling and Lighting</h2>
+        <h2 class="section-title">Interior Modeling and Lighting</h2><p class="section-intro">Every technical pass is lightbox-enabled — click any render to view modeling details (Wireframe), texture work (Albedo), and technical breakdowns at full size.</p>
         <div class="section-divider"></div>
 
         <div class="project-card">
