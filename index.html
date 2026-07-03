@@ -277,7 +277,7 @@
     .project-images figure:hover .zoom-hint { opacity: 1; }
 
 
-    /* ───────── 3-COL PROJECT IMAGES (Modern Living Corner) ───────── */
+    /* ───────── 3-COL PROJECT IMAGES ───────── */
     .project-images-3col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -815,6 +815,80 @@
               />
               <span class="zoom-hint">⤢</span>
               <figcaption>Detail View</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Environment Lighting -->
+      <div class="portfolio-category">
+        <p class="section-label fade-in">Exterior Visualization</p>
+        <h2 class="section-title fade-in">Environment Lighting</h2>
+        <div class="section-divider fade-in"></div>
+
+        <div class="project-card fade-in">
+          <div class="project-header">
+            <div class="project-tag">3D Environments</div>
+            <h3>Abandoned Railway</h3>
+            <div class="meta">A cinematic environment lighting study capturing the weathered textures of an abandoned locomotive during the golden hour.</div>
+          </div>
+          <style>
+            .project-images-5 {
+              display: grid;
+              grid-template-columns: repeat(6, 1fr);
+              gap: 0;
+            }
+            .project-images-5 figure {
+              position: relative;
+              overflow: hidden;
+              margin: 0;
+              aspect-ratio: 4/3;
+              grid-column: span 2;
+            }
+            .project-images-5 figure:nth-child(1),
+            .project-images-5 figure:nth-child(2) {
+              grid-column: span 3;
+            }
+            .project-images-5 figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+            .project-images-5 figure:hover img { transform: scale(1.04); }
+            .project-images-5 figure figcaption {
+              position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 16px;
+              background: linear-gradient(transparent, rgba(0,0,0,0.7));
+              font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2);
+            }
+            .project-images-5 figure + figure { border-left: 1px solid var(--border); }
+            .project-images-5 figure:nth-child(3) { border-left: none; }
+            .project-images-5 figure:nth-child(n+3) { border-top: 1px solid var(--border); }
+            @media (max-width: 900px) {
+              .project-images-5 { grid-template-columns: 1fr 1fr; }
+              .project-images-5 figure { grid-column: span 1 !important; border: none !important; border-bottom: 1px solid var(--border) !important; }
+            }
+          </style>
+          <div class="project-images-5">
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/1554d0eabf534a37bc55b730552eb5e2_Final%20Render.jpg" alt="Abandoned Railway — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Final Render" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/daf9d90496fd48a0bd88451e490ce460_wireframe.jpg" alt="Abandoned Railway — Wireframe" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Wireframe" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Wireframe</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/434abd7eeb9c4d059a7f9b6d766ebb30_albedo.jpg" alt="Abandoned Railway — Albedo Pass" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Albedo Pass" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Albedo</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/62a179742c2b48a8b788d16d1a3d0087_ambient-occlusion.jpg" alt="Abandoned Railway — AO Pass" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — AO Pass" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Ambient Occlusion</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/847056502d954e3994b8762aa15b872c_normal%20map.jpg" alt="Abandoned Railway — Normal Map" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Normal Map" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Normal Map</figcaption>
             </figure>
           </div>
         </div>
