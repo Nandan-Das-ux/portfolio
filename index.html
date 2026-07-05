@@ -4,3 +4,1044 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nandan Das | 3D Artist</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --surface:   #161616;
+      --surface2:  #1e1e1e;
+      --border:    #2a2a2a;
+      --accent:    #c9a96e;
+      --accent2:   #e8d5b0;
+      --text:      #e0e0e0;
+      --muted:     #888;
+      --radius:    6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ───────── NAV ───────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(13,13,13,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    nav ul a:hover { color: var(--accent); }
+
+    /* ───────── HERO ───────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(201,169,110,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 44px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 34px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn:hover { background: var(--accent); color: var(--bg); }
+
+    /* ───────── SECTION COMMON ───────── */
+    section { padding: 100px 24px; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .section-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 56px;
+    }
+
+    /* ───────── PORTFOLIO CATEGORIES ───────── */
+    #work { background: var(--surface); }
+
+    .portfolio-category { margin-bottom: 100px; }
+    .portfolio-category:last-child { margin-bottom: 0; }
+
+    
+
+
+    
+
+
+    .project-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .project-header h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .project-header .meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-header .meta::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    
+
+    
+
+
+    /* Clickable image cursor */
+    .lightbox-trigger {
+      cursor: zoom-in;
+    }
+
+    /* Zoom icon hint on project images */
+    .project-images figure .zoom-hint {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(201,169,110,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .project-images figure:hover .zoom-hint { opacity: 1; }
+
+
+    /* ───────── 3-COL PROJECT IMAGES ───────── */
+    
+
+    
+
+
+    /* Space between consecutive project cards */
+    .project-card + 
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /* ───────── OTHER WORKS ───────── */
+
+    
+
+
+    /* ───────── ABOUT ───────── */
+    #about { background: var(--surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual img {
+       width:100%; height:100%; object-fit:cover; object-position:center top; display:block;
+    }
+
+    .about-visual .accent-line {
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    .about-content .section-label { margin-bottom: 8px; }
+    .about-content .section-title { margin-bottom: 24px; }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .skill-chip {
+      padding: 6px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    /* ───────── CONTACT / FOOTER ───────── */
+    footer {
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      padding: 80px 24px 40px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      max-width: 1100px;
+      margin: 0 auto 64px;
+    }
+
+    .contact-info .section-label { margin-bottom: 8px; }
+    .contact-info .section-title { margin-bottom: 16px; }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 380px;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    .contact-link .icon {
+      width: 36px; height: 36px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.25s;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+
+    .contact-form textarea { min-height: 120px; }
+
+    .contact-form button {
+      padding: 13px 28px;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      color: var(--bg);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.25s;
+      align-self: flex-start;
+    }
+
+    .contact-form button:hover { opacity: 0.85; }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-bottom .logo { color: var(--accent); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; }
+
+    /* ───────── LIGHTBOX ───────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: lbFadeIn 0.25s ease;
+    }
+
+    #lightbox.open {
+      display: flex;
+    }
+
+    @keyframes lbFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    #lightbox-img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+      animation: lbImgIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: block;
+    }
+
+    @keyframes lbImgIn {
+      from { transform: scale(0.88); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    #lightbox-close {
+      position: fixed;
+      top: 18px; right: 22px;
+      width: 44px; height: 44px;
+      background: rgba(30,30,30,0.85);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text);
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      z-index: 10000;
+    }
+
+    #lightbox-close:hover {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    #lightbox-caption {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      background: rgba(0,0,0,0.55);
+      padding: 6px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── Scroll-based fade-in ──
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+    */
+  
+    /* Unified High-Density Square Grid */
+    .project-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr)) !important; /* Smaller thumbnails */
+      gap: 5px !important;
+      background: transparent !important;
+      padding: 0 !important;
+      border: none !important;
+      width: 100% !important;
+    }
+
+    .project-grid figure {
+      grid-column: span 1 !important;
+      width: 100% !important;
+      aspect-ratio: 1 / 1 !important; /* STRICT SQUARE */
+      margin: 0 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border: 1px solid var(--border) !important;
+      background: var(--surface) !important;
+      border-radius: 4px !important;
+      display: block !important;
+      height: auto !important; /* Let aspect-ratio define height */
+    }
+
+    .project-grid figure img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+    }
+
+    .project-grid figure figcaption {
+      font-size: 0.65rem !important;
+      padding: 4px 8px !important;
+      background: rgba(0,0,0,0.7) !important;
+      display: block !important;
+    }
+
+    /* Smaller Project Card headers to match */
+    .project-card {
+      max-width: 1100px !important;
+      margin: 0 auto 50px !important;
+    }
+    .project-header {
+      padding: 16px 20px !important;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+      max-width: 800px;
+    }
+
+    /* Tactile Animations */
+    .project-grid figure {
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    .project-grid figure:hover {
+      border-color: var(--accent) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+      z-index: 10 !important;
+    }
+
+    .project-grid figure:active {
+      transform: scale(0.97) !important; /* Subtle press effect */
+    }
+
+    .project-grid figure img {
+      transition: transform 0.5s ease !important;
+    }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nandan Das</div>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <p class="hero-eyebrow">Nandan Das · 3D Artist</p>
+    <h1>Crafting<br /><span>Spaces</span> in 3D</h1>
+    <p>Photorealistic interior renders and detailed 3D environments — blending artistry with precision.</p>
+    <a href="#work" class="btn">View Projects</a>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="work">
+    <div class="container">
+      
+      <!-- Category: Interior Modeling and Lighting -->
+      <div class="portfolio-category">
+        <p class="section-label">3D Visualization</p>
+        <h2 class="section-title">Interior Modeling and Lighting</h2><p class="section-intro">Every technical pass is lightbox-enabled — click any render to view modeling details (Wireframe), texture work (Albedo), and technical breakdowns at full size.</p>
+        <div class="section-divider"></div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-tag">Autodesk Maya</div>
+            <h3>Barber Shop Interior</h3>
+            <div class="meta">Full interior scene — lighting, shading &amp; rendering</div>
+          </div>
+          <div class="project-grid">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/b3c6f1e9d787485eb4485e6cec29be9a_barber_shop_render.jpg"
+                alt="Barber Shop — Final Render"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — Final Render"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/472106dff09a4d9fad6e732f19553522_barber_shop_ao.png"
+                alt="Barber Shop — AO Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — AO Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/edd5fa49a52a463981bf0e8e7fa48f46_barber_shop_albedo.jpg"
+                alt="Barber Shop — Albedo Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — Albedo Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Albedo Pass</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/79b2b2e19bd14489bdea7e859c674b00_barber_shop_wireframe.png"
+                alt="Barber Shop — Wireframe"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Barber Shop — Wireframe"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Wireframe</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Modern Living Corner -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-tag">Blender</div>
+            <h3>Modern Living Corner</h3>
+            <div class="meta">A photorealistic interior study focusing on soft natural lighting, realistic fabric textures, and minimalist composition.</div>
+          </div>
+          <div class="project-grid">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a26b1b0d337a46399152194e2bd25e6c_blender_interior_final.jpg"
+                alt="Modern Living Corner — Final Render"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Modern Living Corner — Final Render"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/5ed782e17a9e4acb87b0438c2867144c_blender_interior_ao.png"
+                alt="Modern Living Corner — AO Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Modern Living Corner — AO Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a6987aa1b56e433b95228b0e67be9a98_blender_interior_detail.jpg"
+                alt="Modern Living Corner — Detail View"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Modern Living Corner — Detail View"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Detail View</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Environment Lighting -->
+      <div class="portfolio-category">
+        <p class="section-label">Exterior Visualization</p>
+        <h2 class="section-title">Environment Lighting</h2>
+        <div class="section-divider"></div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-tag">3D Environments</div>
+            <h3>Abandoned Railway</h3>
+            <div class="meta">An abandoned railway scene featuring an overgrown locomotive surrounded by wild grasses and foliage — modeled in Autodesk Maya with compositing in Photoshop. Foliage created using Maya's Get Brush tool. Train model sourced from Sketchfab.</div>
+          </div>
+          
+          <div class="project-grid" style="padding: 0 30px 30px;">
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/1554d0eabf534a37bc55b730552eb5e2_Final%20Render.jpg" alt="Abandoned Railway — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Final Render" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/daf9d90496fd48a0bd88451e490ce460_wireframe.jpg" alt="Abandoned Railway — Wireframe" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Wireframe" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Wireframe</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/434abd7eeb9c4d059a7f9b6d766ebb30_albedo.jpg" alt="Abandoned Railway — Albedo Pass" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Albedo Pass" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Albedo</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/62a179742c2b48a8b788d16d1a3d0087_ambient-occlusion.jpg" alt="Abandoned Railway — AO Pass" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — AO Pass" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Ambient Occlusion</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/847056502d954e3994b8762aa15b872c_normal%20map.jpg" alt="Abandoned Railway — Normal Map" loading="lazy" class="lightbox-trigger" data-caption="Abandoned Railway — Normal Map" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Normal Map</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Daily life of Rural India -->
+        <div class="project-card fade-in">
+          <div class="project-header">
+            <div class="project-tag">Autodesk Maya</div>
+            <h3>Daily life of Rural India</h3>
+            <div class="meta">A detailed 3D recreation of a rural Indian courtyard, capturing the everyday atmosphere through intricate modeling and Photoshop compositing.</div>
+          </div>
+          <div class="project-grid" style="padding: 0 30px 30px;">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/4a4c5aed4d944d9f8a2d0bf928ae62d9_Final%20Composition.jpg"
+                alt="Daily life of Rural India — Final Composition"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Final Composition"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Composition</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/0fa66ec7162b47f7b61affe1a6a14a20_rural_india_final.png" alt="Daily life of Rural India — Final Render" loading="lazy" class="lightbox-trigger" data-caption="Final Render" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/abc26ec35ec145a4ac1d2a72475aaa33_rural_india_ao.png" alt="Daily life of Rural India — AO Pass" loading="lazy" class="lightbox-trigger" data-caption="AO Pass" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/037d245b561541849fb457e5c369fe6e_rural_india_crypto_object.png" alt="Daily life of Rural India — Crypto Object" loading="lazy" class="lightbox-trigger" data-caption="Crypto Object" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Crypto Object</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/569ea9e8fb474e0f81bfddf2377a544f_rural_india_crypto_material.png" alt="Daily life of Rural India — Crypto Material" loading="lazy" class="lightbox-trigger" data-caption="Crypto Material" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Crypto Material</figcaption>
+            </figure>
+            <figure>
+              <img src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/ab5ace1c3752448bbb4e9c18920993d2_rural_india_crypto_asset.png" alt="Daily life of Rural India — Crypto Asset" loading="lazy" class="lightbox-trigger" data-caption="Crypto Asset" />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Crypto Asset</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Category: Unreal Project -->
+      <div class="portfolio-category">
+        <p class="section-label">Game Engine</p>
+        <h2 class="section-title">Unreal Project</h2>
+        <div class="section-divider"></div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-tag">Unreal Engine 4</div>
+            <h3>Abandoned Forest</h3>
+            <div class="meta">My first project created in Unreal Engine 4 — a cinematic environment study exploring mood, atmosphere, and natural lighting in a dense, abandoned forest setting.</div>
+          </div>
+          <div style="padding: 0 30px 30px;">
+            <video
+              controls
+              loop
+              muted
+              style="width:100%; border-radius: 8px; border: 1px solid var(--border); aspect-ratio: 16/9;"
+            >
+              <source src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/bde4437fc0ad4323a90c0bdf57d1fdf7_Asthetic%20forrest%20%282%29.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Product Visualization -->
+      <div class="portfolio-category">
+        <p class="section-label">Product Study</p>
+        <h2 class="section-title">Product Visualization</h2>
+        <div class="section-divider"></div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-tag">3D Product</div>
+            <h3>Headphone Project</h3>
+            <div class="meta">A high-fidelity 3D product study featuring a detailed headphone model. This project showcases intricate modeling, PBR texturing, and studio-quality lighting to capture realistic material properties.</div>
+          </div>
+          <div class="project-grid" style="padding: 0 30px 30px;">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a6228ac884a7411cb5130c1c4f141e1f_Headphone.jpg"
+                alt="Headphone Project — Final Render"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Final Render"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/d2dd4b9cf07648e886d3245e680178c9_Headphone_front.jpg"
+                alt="Headphone Project — Front View"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Front View"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Front View</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/be96f83977064ecda5e1c7d8b4d51ad8_Headphone_Left.jpg"
+                alt="Headphone Project — Left View"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Left View"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Left View</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/db9eee4e26c64eb58113c9bc9608e12f_AO_information.jpg"
+                alt="Headphone Project — AO Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="AO Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
+          </div>
+          <div style="padding: 0 30px 30px;">
+            <video
+              controls
+              loop
+              muted
+              style="width:100%; border-radius: 8px; border: 1px solid var(--border); aspect-ratio: 16/9;"
+            >
+              <source src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/402e7f0048d541e6bbb0b14be5c2ad57_Headphone_Animation.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="accent-line"></div>
+          <img
+            src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/8d990073b1594e26b3f4ce527ab777c7_nandan_das_profile_v2.jpg"
+            alt="Nandan Das — 3D Artist"
+          />
+        </div>
+        <div class="about-content">
+          <p class="section-label">About</p>
+          <h2 class="section-title">About Nandan Das</h2>
+          <div class="section-divider"></div>
+          <p>
+            A passionate 3D interior designer and visualization artist with a deep focus on creating
+            photorealistic environments. Every project begins with a concept and is meticulously
+            crafted into a fully detailed, lifelike space.
+          </p>
+          <p>
+            Specializing in architectural visualization and interior renders, using industry-leading
+            tools to bring spaces to life with accurate lighting, materials, and atmosphere.
+          </p>
+          <div class="skills-list">
+            <span class="skill-chip">Autodesk Maya</span>
+            <span class="skill-chip">Blender</span>
+            <span class="skill-chip">3D Modeling</span>
+            <span class="skill-chip">Lighting</span>
+            <span class="skill-chip">Shading</span>
+            <span class="skill-chip">Rendering</span>
+            <span class="skill-chip">Compositing</span>
+            <span class="skill-chip">Interior Design</span>
+            <span class="skill-chip">Arch-Viz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Get In Touch</h2>
+        <p>
+          Interested in collaborating or commissioning a 3D interior visualization?
+          Reach out and let's create something together.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:ndas3683@gmail.com" class="contact-link">
+            <span class="icon">✉</span>
+            ndas3683@gmail.com
+          </a>
+          <a href="https://nandan0001.artstation.com/" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <span class="icon">🎨</span>
+            ArtStation Portfolio
+          </a>
+          <a href="https://www.linkedin.com/in/nandan-das-98954924a?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <span class="icon">💼</span>
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit" style="cursor:pointer;">Send Message</button>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <div class="logo">Nandan Das</div>
+      <p>© 2026 · Nandan Das · 3D Artist · All renders created in Autodesk Maya &amp; Blender</p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button id="lightbox-close" aria-label="Close lightbox">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+    <span id="lightbox-caption"></span>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#4caf82';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
+    }
+
+    const lightbox        = document.getElementById('lightbox');
+    const lightboxImg     = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose   = document.getElementById('lightbox-close');
+
+    function openLightbox(src, alt, caption) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightboxCaption.textContent = caption || '';
+      lightboxCaption.style.display = caption ? 'block' : 'none';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lightboxImg.src = ''; }, 300);
+    }
+
+    document.querySelectorAll('.lightbox-trigger').forEach(img => {
+      img.addEventListener('click', () => {
+        openLightbox(img.src, img.alt, img.dataset.caption || img.alt);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+  </script>
+</body>
+</html>
