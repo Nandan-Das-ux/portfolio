@@ -536,11 +536,11 @@
     .fade-in.visible { opacity: 1; transform: none; }
     */
   
-    /* Unified Square Tile Grid System */
+    /* Unified High-Density Square Grid */
     .project-grid, .gallery-grid {
       display: grid !important;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 500px), 1fr)) !important; /* Smaller thumbnails */
-      gap: 10px !important;
+      gap: 5px !important;
       background: transparent !important;
       padding: 0 !important;
       border: none !important;
@@ -556,20 +556,9 @@
       overflow: hidden !important;
       border: 1px solid var(--border) !important;
       background: var(--surface) !important;
-      border-radius: 8px !important;
-      transition: all 0.3s ease !important;
-      cursor: zoom-in !important;
-    }
-
-    /* Interactive States */
-    .project-grid figure:hover, .gallery-item:hover {
-      border-color: var(--accent) !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-      z-index: 2 !important;
-    }
-
-    .project-grid figure:active, .gallery-item:active {
-      transform: scale(0.96) !important;
+      border-radius: 4px !important;
+      display: block !important;
+      height: auto !important; /* Let aspect-ratio define height */
     }
 
     .project-grid figure img, .gallery-item img {
@@ -577,39 +566,26 @@
       height: 100% !important;
       object-fit: cover !important;
       display: block !important;
-      transition: transform 0.5s ease !important;
-    }
-
-    .project-grid figure:hover img, .gallery-item:hover img {
-      transform: scale(1.05) !important;
-    }
-
-    .project-grid figure figcaption {
       position: absolute !important;
-      bottom: 0 !important;
+      top: 0 !important;
       left: 0 !important;
-      right: 0 !important;
-      font-size: 0.65rem !important;
-      padding: 5px 8px !important;
-      background: rgba(0,0,0,0.7) !important;
-      color: #fff !important;
-      z-index: 10 !important;
-      pointer-events: none !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.05em !important;
     }
 
+    .project-grid figure figcaption, 
+    .gallery-item figcaption {
+      font-size: 0.65rem !important;
+      padding: 4px 8px !important;
+      background: rgba(0,0,0,0.7) !important;
+      display: block !important;
+    }
+
+    /* Smaller Project Card headers to match */
     .project-card {
       max-width: 1100px !important;
       margin: 0 auto 50px !important;
-      background: var(--surface2) !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
-      border: 1px solid var(--border) !important;
     }
-
     .project-header {
-      padding: 24px 30px 18px !important;
+      padding: 16px 20px !important;
     }
 
     .section-intro {
@@ -882,6 +858,67 @@
               <source src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/bde4437fc0ad4323a90c0bdf57d1fdf7_Asthetic%20forrest%20%282%29.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Product Visualization -->
+      <div class="portfolio-category">
+        <p class="section-label">Product Study</p>
+        <h2 class="section-title">Product Visualization</h2>
+        <div class="section-divider"></div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-tag">3D Product</div>
+            <h3>Headphone Project</h3>
+            <div class="meta">A high-fidelity 3D product study featuring a detailed headphone model. This project showcases intricate modeling, PBR texturing, and studio-quality lighting to capture realistic material properties.</div>
+          </div>
+          <div class="project-grid" style="padding: 0 30px 30px;">
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/a6228ac884a7411cb5130c1c4f141e1f_Headphone.jpg"
+                alt="Headphone Project — Final Render"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Final Render"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Final Render</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/d2dd4b9cf07648e886d3245e680178c9_Headphone_front.jpg"
+                alt="Headphone Project — Front View"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Front View"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Front View</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/be96f83977064ecda5e1c7d8b4d51ad8_Headphone_Left.jpg"
+                alt="Headphone Project — Left View"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="Left View"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>Left View</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://customer-assets.emergentagent.com/wingman/c144d89c-54e8-4473-b8de-f83f2c2be6bc/attachments/db9eee4e26c64eb58113c9bc9608e12f_AO_information.jpg"
+                alt="Headphone Project — AO Pass"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-caption="AO Pass"
+              />
+              <span class="zoom-hint">⤢</span>
+              <figcaption>AO Pass</figcaption>
+            </figure>
           </div>
         </div>
       </div>
